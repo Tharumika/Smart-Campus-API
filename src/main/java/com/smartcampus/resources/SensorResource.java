@@ -83,6 +83,7 @@ public class SensorResource {
      */
     @Path("/{sensorId}/readings")
     public SensorReadingResource getReadingsResource(@PathParam("sensorId") String sensorId) {
+<<<<<<< HEAD
         return new SensorReadingResource(sensorId);
     }
 
@@ -115,4 +116,9 @@ public class SensorResource {
         
         return Response.noContent().build();
     }
+=======
+        // Pass the contextual sensorId to the newly instantiated sub-resource
+        return new SensorReadingResource(sensorId);
+    }
+>>>>>>> 469379c8b91dc4899f60d48b5bfe01912f29bbce
 }

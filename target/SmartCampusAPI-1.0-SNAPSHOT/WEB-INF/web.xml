@@ -5,8 +5,13 @@
         <servlet-name>Jersey Web Application</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
+<<<<<<< HEAD
             <param-name>jersey.config.server.provider.packages</param-name>
             <param-value>com.smartcampus</param-value>
+=======
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>com.smartcampus.config.ApplicationConfig</param-value>
+>>>>>>> 469379c8b91dc4899f60d48b5bfe01912f29bbce
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
