@@ -175,34 +175,34 @@ All errors return structured JSON (never raw Java stack traces):
 
 ## 7. Technical Report Questions
 
+*Note: Full answers to all questions are provided in TECHNICAL_REPORT.md*
+
 ### Part 1.1: JAX-RS Lifecycle & Thread Safety
-Explain the default lifecycle of a JAX-RS Resource class. How does this architectural decision impact the way you manage in-memory data structures?
+Is a new instance instantiated for every incoming request, or does the runtime treat it as a singleton? Elaborate on how this architectural decision impacts the way you manage and synchronize your in-memory data structures (maps/lists) to prevent data loss or race conditions.
 
 ### Part 1.2: HATEOAS & Hypermedia
-Why is the provision of "Hypermedia" (links and navigation within responses) considered a hallmark of advanced RESTful design?
+Why is the provision of "Hypermedia" (links and navigation within responses) considered a hallmark of advanced RESTful design (HATEOAS)? How does this approach benefit client developers compared to static documentation?
 
 ### Part 2.1: Returning IDs vs. Full Objects
-When returning a list of rooms, what are the implications of returning only IDs versus returning full room objects?
+When returning a list of rooms, what are the implications of returning only IDs versus returning the full room objects? Consider network bandwidth and client side processing.
 
 ### Part 2.2: Idempotency of the DELETE Operation
-Is the DELETE operation idempotent? Provide a detailed justification.
+Is the DELETE operation idempotent in your implementation? Provide a detailed justification by describing what happens if a client mistakenly sends the exact same DELETE request for a room multiple times.
 
 ### Part 3.1: @Consumes and Media Type Mismatches
-What happens if a client sends data in a different format (e.g., text/plain) when @Consumes(MediaType.APPLICATION_JSON) is specified?
+We explicitly use the @Consumes(MediaType.APPLICATION_JSON) annotation on the POST method. Explain the technical consequences if a client attempts to send data in a different format, such as text/plain or application/xml. How does JAX-RS handle this mismatch?
 
 ### Part 3.2: Query Parameters vs. Path Parameters
-Contrast @QueryParam with using path parameters for filtering (e.g., `/sensors/type/CO2`).
+You implemented this filtering using @QueryParam. Contrast this with an alternate design where the type is part of the URL path (e.g., /api/vl/sensors/type/CO2). Why is the queryparameterapproach generally considered superior for filtering and searching collections?
 
 ### Part 4.1: Sub-Resource Locator Pattern
-Discuss the architectural benefits of the Sub-Resource Locator pattern.
+Discuss the architectural benefits of the Sub-Resource Locator pattern. How does delegating logic to separate classes help manage complexity in large APIs compared to defining every nested path (e.g., sensors/{id}/readings/{rid}) in one massive controller class?
 
 ### Part 5.2: 422 Unprocessable Entity vs. 404 Not Found
-Why is HTTP 422 often considered more semantically accurate than 404 for missing payload references?
+Why is HTTP422 often considered more semantically accurate than a standard 404 when the issue is a missing reference inside a valid JSON payload?
 
 ### Part 5.4: Cybersecurity Risks of Stack Traces
-From a cybersecurity standpoint, explain the risks of exposing Java stack traces.
+From a cybersecurity standpoint, explain the risks associated with exposing internal Java stack traces to external API consumers. What specific information could an attacker gather from such a trace?
 
 ### Part 5.5: JAX-RS Filters for Cross-Cutting Concerns
-Why is it advantageous to use JAX-RS filters for logging rather than manually inserting Logger statements?
-
-*Note: Full answers to all questions are provided in TECHNICAL_REPORT.md*
+Why is it advantageous to use JAX-RS filters for logging, rather than manually inserting Logger statements inside every single resource method?
