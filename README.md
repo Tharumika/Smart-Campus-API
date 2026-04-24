@@ -1,11 +1,5 @@
 # Smart Campus Sensor & Room Management API
 
-## University of Westminster - Client-Server Architectures (5COSC022W)
-**Module Leader:** Dr. Hamed Hamzeh  
-**Coursework Weight:** 60% of final grade
-
----
-
 ## 1. Overview
 
 The Smart Campus API is a robust, production-ready RESTful web service built strictly using **JAX-RS (Jakarta RESTful Web Services)** with Jersey as the implementation. It manages the university's "Smart Campus" initiative, providing a comprehensive interface for managing Rooms, Sensors (IoT devices), and historical Sensor Readings.
@@ -176,7 +170,3 @@ All errors return structured JSON (never raw Java stack traces):
 | 409 | Delete room with active sensors |
 | 422 | Invalid roomId in sensor payload |
 | 500 | Unexpected server error |
-
----
-
-**Good luck with your submission!** 🚀
