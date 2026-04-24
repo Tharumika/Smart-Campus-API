@@ -170,3 +170,39 @@ All errors return structured JSON (never raw Java stack traces):
 | 409 | Delete room with active sensors |
 | 422 | Invalid roomId in sensor payload |
 | 500 | Unexpected server error |
+
+---
+
+## 7. Technical Report Questions
+
+### Part 1.1: JAX-RS Lifecycle & Thread Safety
+Explain the default lifecycle of a JAX-RS Resource class. How does this architectural decision impact the way you manage in-memory data structures?
+
+### Part 1.2: HATEOAS & Hypermedia
+Why is the provision of "Hypermedia" (links and navigation within responses) considered a hallmark of advanced RESTful design?
+
+### Part 2.1: Returning IDs vs. Full Objects
+When returning a list of rooms, what are the implications of returning only IDs versus returning full room objects?
+
+### Part 2.2: Idempotency of the DELETE Operation
+Is the DELETE operation idempotent? Provide a detailed justification.
+
+### Part 3.1: @Consumes and Media Type Mismatches
+What happens if a client sends data in a different format (e.g., text/plain) when @Consumes(MediaType.APPLICATION_JSON) is specified?
+
+### Part 3.2: Query Parameters vs. Path Parameters
+Contrast @QueryParam with using path parameters for filtering (e.g., `/sensors/type/CO2`).
+
+### Part 4.1: Sub-Resource Locator Pattern
+Discuss the architectural benefits of the Sub-Resource Locator pattern.
+
+### Part 5.2: 422 Unprocessable Entity vs. 404 Not Found
+Why is HTTP 422 often considered more semantically accurate than 404 for missing payload references?
+
+### Part 5.4: Cybersecurity Risks of Stack Traces
+From a cybersecurity standpoint, explain the risks of exposing Java stack traces.
+
+### Part 5.5: JAX-RS Filters for Cross-Cutting Concerns
+Why is it advantageous to use JAX-RS filters for logging rather than manually inserting Logger statements?
+
+*Note: Full answers to all questions are provided in TECHNICAL_REPORT.md*
