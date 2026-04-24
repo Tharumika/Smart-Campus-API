@@ -1,11 +1,5 @@
 # Technical Report: Smart Campus Sensor & Room Management API
 
-## University of Westminster - Client-Server Architectures (5COSC022W)
-**Module Leader:** Dr. Hamed Hamzeh  
-**Student:** [YOUR NAME]  
-**Student ID:** [YOUR ID]  
-**Submission Date:** 24th April 2026
-
 ---
 
 ## Part 1.1: JAX-RS Lifecycle & Thread Safety
@@ -97,7 +91,3 @@ Exposing raw Java stack traces is a critical **Information Disclosure** vulnerab
 
 **Answer:**  
 Using JAX-RS `ContainerRequestFilter` and `ContainerResponseFilter` implements **Aspect-Oriented Programming (AOP)**. Logging is a "cross-cutting concern" that applies to every endpoint. Manually inserting `Logger.info()` into every resource method violates the **DRY (Don't Repeat Yourself)** principle and clutters business logic. Filters intercept traffic **globally at the framework edge**, ensuring consistent observability without coupling logging mechanisms to the core application logic.
-
----
-
-**End of Technical Report**
